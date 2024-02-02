@@ -16,12 +16,11 @@ function addMeal(meal) {
         if (meal[`strIngredient${i}`]) {
             ingredients.push(
                     `${meal[`strIngredient${i}`]} - ${meal[`strMeasure${i}`]}`
-                   
+
                 );
-               
+
             } else {
-               break;
-             
+            break;
 
             }
             
@@ -38,15 +37,15 @@ cont.innerHTML=`
     <div class="ingredients">
         <h3>Ingredients</h3>
         <ul> 
-  
-   ${ingredients.map(
-       ing=>`
-       <li>${ing}</li>
-       `
 
-   ).join('')}
+    ${ingredients.map(
+    ing=>`
+    <li>${ing}</li>
+    `
+
+    ).join('')}
     
-     </ul>
+    </ul>
     </div>
     <div class="description">
         <h3>Instruction</h3>
@@ -56,19 +55,18 @@ cont.innerHTML=`
 
 
 `;
-     
 
 
 }
- async function getIdapi(id){
-     const response=await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
-     const data= await response.json();
-     return data;
- }
+async function getIdapi(id){
+    const response=await fetch(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`);
+    const data= await response.json();
+    return data;
+    }
 window.onload = () => {
-  getIdapi(id).then(res=>{
-      const meals=res.meals[0];
-      addMeal(meals);
-  })
+    getIdapi(id).then(res=>{
+    const meals=res.meals[0];
+    addMeal(meals);
+})
 
 }
